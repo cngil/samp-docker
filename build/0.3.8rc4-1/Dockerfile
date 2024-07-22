@@ -1,6 +1,4 @@
-FROM debian:jessie
-
-MAINTAINER Pyrax <piranhadev@gmail.com>
+FROM debian:bookworm-slim
 
 # SA-MP server executable is a x86 application only
 RUN dpkg --add-architecture i386
@@ -13,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 # Download and extract server files
 # Choose a more general directory name which does not contain any version
-RUN wget http://forum.sa-mp.com/files/038RC/samp038svr_RC4-1.tar.gz \
+RUN wget https://github.com/cngil/samp-files/blob/master/archives/samp038svr_RC4-1.tar.gz?raw=true -O samp038svr_RC4-1.tar.gz\
  && tar xzf samp038svr_RC4-1.tar.gz \
  && rm -f samp038svr_RC4-1.tar.gz \
  && mv /samp03 /samp-svr \
